@@ -15,7 +15,7 @@ Analyzing user behavior and revenue performance for an e-commerce platform using
 ## 🔧 Tools Used
 
 - **Google BigQuery** (Standard SQL)
-- **Techniques:** `UNNEST()` for nested data, CTEs (`WITH`), window functions, `UNION ALL`, `LEFT JOIN` / `FULL JOIN`, date parsing/formatting
+- **Techniques:** `UNNEST()` for nested data, CTEs (`WITH`), window functions, `UNION ALL`, `JOIN` , date parsing/formatting
 
 ---
 
@@ -49,7 +49,7 @@ ORDER BY month;
 ```
 
 **Result:**
-
+<img width="643" height="111" alt="Q1" src="https://github.com/user-attachments/assets/646e7896-34c5-4478-b92d-f9443ce19ff9" />
 
 ---
 
@@ -79,6 +79,7 @@ ORDER BY total_visits DESC;
 ```
 
 **Result:**
+<img width="637" height="431" alt="Q2" src="https://github.com/user-attachments/assets/29ac89b2-9257-46ea-b720-87a469f1cd36" />
 
 *Showing top 15 rows ordered by total visits. Full results available by running the query.*
 
@@ -124,6 +125,7 @@ ORDER BY source, time;
 ```
 
 **Result:**
+<img width="792" height="490" alt="Q3" src="https://github.com/user-attachments/assets/954deb5d-e0f3-4bde-949d-2aa8cfa78c1f" />
 
 *Showing top 17 rows ordered by source & time. Full results available by running the query.*
 
@@ -156,7 +158,7 @@ ORDER BY conversion_rate DESC;
 ```
 
 **Result:**
-
+<img width="645" height="115" alt="Q4" src="https://github.com/user-attachments/assets/dcdbb0fc-37a2-4bbe-9f27-a2ce5c4fb839" />
 
 ---
 
@@ -204,7 +206,7 @@ ORDER BY tb1.month;
 ```
 
 **Result:**
-
+<img width="691" height="88" alt="Q5" src="https://github.com/user-attachments/assets/b5356577-df66-44c3-a64c-278d2b3c61b8" />
 
 ---
 
@@ -232,7 +234,7 @@ GROUP BY format_date('%Y%m',parse_date('%Y%m%d',date));
 ```
 
 **Result:**
-
+<img width="488" height="67" alt="Q6" src="https://github.com/user-attachments/assets/33199a20-9729-49ff-be0a-4a57d87145b0" />
 
 ---
 
@@ -262,7 +264,7 @@ ORDER BY SUM(product.productRevenue) DESC;
 ```
 
 **Result:**
-
+<img width="868" height="120" alt="Q7" src="https://github.com/user-attachments/assets/f05e19aa-0d2f-40e6-9569-0b871ed0836f" />
 
 ---
 
@@ -299,6 +301,7 @@ ORDER BY quantity DESC;
 ```
 
 **Result:**
+<img width="391" height="543" alt="Q8" src="https://github.com/user-attachments/assets/ffa23a4e-8d73-4a99-9438-c2bd83d1d63b" />
 
 *Showing top 19 rows ordered by quantity bought. Full results available by running the query.*
 
@@ -359,7 +362,7 @@ ORDER BY month;
 ```
 
 **Result:**
-
+<img width="894" height="117" alt="q9" src="https://github.com/user-attachments/assets/cf294752-99e3-4f48-82d3-1f22e490c744" />
 
 ---
 
@@ -397,7 +400,7 @@ FROM tb1
 ```
 
 **Result:**
-
+<img width="867" height="458" alt="Q10" src="https://github.com/user-attachments/assets/3b52c342-1acf-47df-b36e-2a3c550b646e" />
 
 ---
 ## 🔍 Key Insights

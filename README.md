@@ -6,7 +6,7 @@ Analyzing user behavior and revenue performance for an e-commerce platform using
 
 ## 📁 Dataset
 
-- **Source:** [Google Analytics Sample Dataset](https://console.cloud.google.com/bigquery?project=bigquery-public-data&page=dataset&d=google_analytics_sample) (BigQuery public dataset)
+- **Source:** [Google Analytics Sample Dataset](https://console.cloud.google.com/bigquery?ws=!1m4!1m3!3m2!1sbigquery-public-data!2sgoogle_analytics_sample) (BigQuery public dataset)
 - **Table:** `bigquery-public-data.google_analytics_sample.ga_sessions_*`
 - **Period covered:** August 2016 – August 2017
 - **Structure:** Each row represents one user session, with nested/repeated fields (`hits`, `hits.product`) requiring `UNNEST()` to access product- and hit-level data.

@@ -1,4 +1,4 @@
-# E-commerce Behavior Analysis with SQL (BigQuery)
+# [SQL] E-commerce Behavior Analysis
 
 ## 🎯 Objective
 

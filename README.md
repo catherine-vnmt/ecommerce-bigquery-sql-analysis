@@ -28,10 +28,10 @@ Analyzing user behavior and revenue performance for an e-commerce platform using
 **Business question:** How did overall site traffic and purchasing activity trend across the first quarter of 2017?
 
 **Insight:**
-> Traffic and transactions both peaked in March 2017.
-> While February saw a dip in visits (-3.9% vs January), March rebounded strongly with the highest visits (69,931), pageviews (259,522), and transactions (993) across the quarter — a 39% jump in transactions compared to January.
-> Notably, the average pageviews per visit remained relatively stable across all three months (~3.97–3.98 pages/visit), suggesting consistent user engagement quality.
-> The growth in transactions outpaced the growth in visits, indicating an improving conversion trend through Q1 2017.
+> - Traffic and transactions both peaked in March 2017.
+> - While February saw a dip in visits (-3.9% vs January), March rebounded strongly with the highest visits (69,931), pageviews (259,522), and transactions (993) across the quarter — a 39% jump in transactions compared to January.
+> - Notably, the average pageviews per visit remained relatively stable across all three months (~3.97–3.98 pages/visit), suggesting consistent user engagement quality.
+> - The growth in transactions outpaced the growth in visits, indicating an improving conversion trend through Q1 2017.
 
 **Key technique:**
 Date parsing, `GROUP BY`

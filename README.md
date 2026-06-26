@@ -493,22 +493,22 @@ FROM tb1
 
 ---
 ## 🔍 Key Insights
-1. Direct traffic is the most valuable channel across all metrics
+1. **Direct traffic is the most valuable channel across all metrics**
 Consistently ranking #1 in visits, transactions, revenue, and conversion rate (2.48%), direct traffic represents a loyal, brand-aware customer base that converts efficiently and spends the most. This channel alone accounts for the majority of business value.
 
-2. Google drives volume but not value
+2. **Google drives volume but not value**
 Despite being the second-largest traffic source (179,804 visits in 2017), Google's conversion rate is just 0.92% — less than half of direct traffic. Combined with its mid-range bounce rate (51.6% in July), Google is bringing in a large top-of-funnel audience that browses but doesn't buy — a volume-quality mismatch that represents both a challenge and an opportunity.
 
-3. The biggest conversion drop-off happens before the cart
+3. **The biggest conversion drop-off happens before the cart**
 Q9's funnel analysis reveals that even in March (the best-performing month), 62.71% of product viewers leave without adding anything to cart. This product view → add-to-cart gap is the single largest friction point in the entire purchase journey — larger than the cart → purchase drop-off.
 
-4. Mobile revenue is critically underperforming
+4. **Mobile revenue is critically underperforming**
 Desktop accounts for 96.14% of total revenue despite mobile typically driving the majority of e-commerce traffic. Combined with mobile Facebook's high bounce rate (64.3% in Q2), this points to a systemic mobile experience issue rather than simply low mobile demand.
 
-5. Conversion quality improved consistently through Q1 2017
+5. **Conversion quality improved consistently through Q1 2017**
 Both add-to-cart rate (28.47% → 37.29%) and purchase rate (8.31% → 12.64%) trended upward from January to March — suggesting improving site experience or traffic quality heading into Q2. February's counterintuitive pattern (fewer visits but higher conversion rate) further supports that traffic quality matters more than volume.
 
-6. Purchasing users are decisive and loyal
+6. **Purchasing users are decisive and loyal**
 Q5 and Q6 together paint a clear picture: buyers browse far fewer pages than non-buyers (~124 vs ~334 pageviews) but complete an average of 4.16 transactions per month. This "low browse, high buy" behavior signals a segment of highly loyal, efficient purchasers who know what they want.
 
 
@@ -516,15 +516,15 @@ Q5 and Q6 together paint a clear picture: buyers browse far fewer pages than non
 
 Based on the analysis across all 10 queries:
 
-1. Invest in mobile experience optimization (Highest Priority)
+1. **Invest in mobile experience optimization (Highest Priority)**
 With desktop generating 96% of revenue, any shift in user behavior toward mobile poses a major business risk. Audit the mobile checkout flow, page load speed, and product page layout to identify friction points.
 
-2. Fix the product page to improve add-to-cart rate
+2. **Fix the product page to improve add-to-cart rate**
 The product view → add-to-cart stage loses over 60% of potential buyers even in the best month. A/B test improvements to product pages — clearer CTAs, better product images, size guides, customer reviews, or urgency signals — to move the needle on this critical conversion point.
 
-3. Improve Google traffic quality through better targeting and landing pages
+3. **Improve Google traffic quality through better targeting and landing pages**
 Google's 0.92% conversion rate vs direct's 2.48% suggests a targeting or landing page mismatch. Consider refining Google Ads audience targeting toward higher-intent keywords, and ensure landing pages are tightly aligned with the search queries driving traffic.
 
-4. Leverage cross-sell opportunities at checkout
+4. **Leverage cross-sell opportunities at checkout**
 Q8 shows Google Sunglasses is purchased alongside the YouTube Men's Vintage Henley at nearly 3x the rate of any other product. Implement "frequently bought together" recommendations at the product and cart pages to increase average order value with minimal development effort.
 

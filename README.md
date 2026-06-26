@@ -221,6 +221,7 @@ ORDER BY conversion_rate DESC;
 
 <img width="645" height="115" alt="Q4" src="https://github.com/user-attachments/assets/dcdbb0fc-37a2-4bbe-9f27-a2ce5c4fb839" />
 </details>
+
 ---
 
 ### Query 05: Average Pageviews — Purchasers vs Non-Purchasers (June–July 2017)
@@ -273,6 +274,7 @@ ORDER BY tb1.month;
 
 <img width="691" height="88" alt="Q5" src="https://github.com/user-attachments/assets/b5356577-df66-44c3-a64c-278d2b3c61b8" />
 </details>
+
 ---
 
 ### Query 06: Average Transactions per Purchasing User (July 2017)
@@ -305,6 +307,7 @@ GROUP BY format_date('%Y%m',parse_date('%Y%m%d',date));
 
 <img width="488" height="67" alt="Q6" src="https://github.com/user-attachments/assets/33199a20-9729-49ff-be0a-4a57d87145b0" />
 </details>
+
 ---
 
 ### Query 07: Revenue Contribution by Device (2017)
@@ -340,6 +343,7 @@ ORDER BY SUM(product.productRevenue) DESC;
 
 <img width="868" height="120" alt="Q7" src="https://github.com/user-attachments/assets/f05e19aa-0d2f-40e6-9569-0b871ed0836f" />
 </details>
+
 ---
 
 ### Query 08: Cross-sell — Other Products Bought by "YouTube Men's Vintage Henley" Buyers (July 2017)
@@ -383,6 +387,7 @@ ORDER BY quantity DESC;
 
 *Showing top 19 rows ordered by quantity bought. Full results available by running the query.*
 </details>
+
 ---
 
 ### Query 09: Conversion Funnel — Product View → Add to Cart → Purchase (Jan–Mar 2017)
@@ -447,6 +452,7 @@ ORDER BY month;
 
 <img width="894" height="117" alt="q9" src="https://github.com/user-attachments/assets/cf294752-99e3-4f48-82d3-1f22e490c744" />
 </details>
+
 ---
 
 ### Query 10: Weekly Revenue & Cumulative Revenue (May–July 2017)

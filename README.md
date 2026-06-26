@@ -4,6 +4,7 @@
 # 📊 [SQL] Customer Behaviour & Conversion Analysis in E-Commerce business
   
 Author: Catherine Vu 
+
 Date: 15/12/2025  
 
 ## 🔧 Tools Used
@@ -17,7 +18,8 @@ Date: 15/12/2025
 1. [📌 Background & Overview](#-background--overview)  
 2. [📂 Dataset Description & Data Structure](#-dataset-description--data-structure)
 3. [⚒️ Main Process](#-Main-Process)
-4. [🔎 Insights & Recommendations](#-final-conclusion--recommendations)
+4. [🔎 Key Insights](#-Key-insights)
+5. [💡 Overall Recommendations](#-Overall-Recommendations)
 
 ---
 
@@ -56,6 +58,7 @@ Each row represents one user session, with nested/repeated fields (`hits`, `hits
 Table: ga_sessions_
 <details>
 <summary>Click to toggle the screenshot of table</summary>
+<img width="1765" height="698" alt="Screenshot 2026-06-26 222621" src="https://github.com/user-attachments/assets/1843d7c5-1bd8-4af6-a1a2-9b037788e5d5" />
 
 </details>
 

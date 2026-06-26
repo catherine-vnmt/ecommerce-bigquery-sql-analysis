@@ -1,5 +1,4 @@
-![E-commerce Customer Behaviour](<img width="1024" height="576" alt="consumer-behavior--1024x576" src="https://github.com/user-attachments/assets/9130a7fa-3f86-4662-8237-da9163ffd086" />
-)
+<img width="1024" height="576" alt="consumer-behavior--1024x576" src="https://github.com/user-attachments/assets/9130a7fa-3f86-4662-8237-da9163ffd086" />
 
 # 📊 [SQL] Customer Behaviour & Conversion Analysis in E-Commerce business
   

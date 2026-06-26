@@ -1,37 +1,77 @@
-# [SQL] E-commerce Behavior Analysis
+![E-commerce Customer Behaviour](<img width="1024" height="576" alt="consumer-behavior--1024x576" src="https://github.com/user-attachments/assets/9130a7fa-3f86-4662-8237-da9163ffd086" />
+)
 
-## 🎯 Objective
-
-Analyzing user behavior and revenue performance for an e-commerce platform using Google's public Google Analytics sample dataset. The goal is to answer 10 real-world business questions covering traffic, conversion, revenue, and customer purchase behavior.
-
-## 📁 Dataset
-
-- **Source:** [Google Analytics Sample Dataset](https://console.cloud.google.com/bigquery?ws=!1m4!1m3!3m2!1sbigquery-public-data!2sgoogle_analytics_sample) (BigQuery public dataset)
-- **Table:** `bigquery-public-data.google_analytics_sample.ga_sessions_*`
-- **Period covered:** August 2016 – August 2017
-- **Structure:** Each row represents one user session, with nested/repeated fields (`hits`, `hits.product`) requiring `UNNEST()` to access product- and hit-level data.
-- **Note:** Google traffic appears across multiple source variants (google, google.com, sites.google.com, mail.google.com). For this analysis, each source is treated independently as extracted from raw GA data. A production-level analysis would consolidate these into channel groupings."
+# 📊 [SQL] Customer Behaviour & Conversion Analysis in E-Commerce business
+  
+Author: Catherine Vu 
+Date: 15/12/2025  
 
 ## 🔧 Tools Used
 
-- **Google BigQuery** (Standard SQL)
-- **Techniques:** `UNNEST()` for nested data, CTEs (`WITH`), window functions, `UNION ALL`, `JOIN` , date parsing/formatting
+- **Google BigQuery** (SQL)
+- **Techniques:** `UNNEST()` for nested data, CTEs (`WITH`), window functions, `UNION ALL`, `LEFT JOIN` / `FULL JOIN`, date parsing/formatting
 
 ---
 
-## 📊 Queries, Results & Insights
+## 📑 Table of Contents  
+1. [📌 Background & Overview](#-background--overview)  
+2. [📂 Dataset Description & Data Structure](#-dataset-description--data-structure)
+3. [⚒️ Main Process](#-Main-Process)
+4. [🔎 Insights & Recommendations](#-final-conclusion--recommendations)
 
 ---
+
+## 📌 Background & Overview  
+
+### 🎯 Objective:
+
+This project uses SQL (BigQuery) to analyse E-commerce business from Google's public Google Analytics sample dataset to 
+
+✔️ Identify the customer behaviour through bounce rate, traffic
+✔️ Provide actionable insights to increase conversion rate   
+ 
+### 👤 Who is this project for?  
+
+✔️ Data analysts & business analysts in marketing department 
+✔️ Decision-makers & stakeholders  
+
+---
+
+## 📂 Dataset Description & Data Structure  
+
+### 📌 Data Source  
+- **Source:** [Google Analytics Sample Dataset](https://console.cloud.google.com/bigquery?project=bigquery-public-data&page=dataset&d=google_analytics_sample) (BigQuery public dataset)  
+
+### 📊 Data Structure & Relationships  
+Each row represents one user session, with nested/repeated fields (`hits`, `hits.product`) requiring `UNNEST()` to access product- and hit-level data.
+
+#### 1️⃣ Tables Used:  
+- **Table:** `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+- **Period covered:** August 2016 – August 2017
+
+***Note:*** Google traffic appears across multiple source variants (google, google.com, sites.google.com, mail.google.com). For this analysis, each source is treated independently as extracted from raw GA data. A production-level analysis would consolidate these into channel groupings."
+
+#### 2️⃣ Table Schema & Data Snapshot  
+
+Table: ga_sessions_
+<details>
+<summary>Click to toggle the screenshot of table</summary>
+
+</details>
+
+---
+
+## ⚒️ Main Process
 
 ### Query 01: Total Visits, Pageviews & Transactions by Month (Jan–Mar 2017)
 
 **Business question:** How did overall site traffic and purchasing activity trend across the first quarter of 2017?
 
 **Insight:**
-> - Traffic and transactions both peaked in March 2017.
-> - While February saw a dip in visits (-3.9% vs January), March rebounded strongly with the highest visits (69,931), pageviews (259,522), and transactions (993) across the quarter — a 39% jump in transactions compared to January.
-> - Notably, the average pageviews per visit remained relatively stable across all three months (~3.97–3.98 pages/visit), suggesting consistent user engagement quality.
-> - The growth in transactions outpaced the growth in visits, indicating an improving conversion trend through Q1 2017.
+- Traffic and transactions both peaked in March 2017.
+- While February saw a dip in visits (-3.9% vs January), March rebounded strongly with the highest visits (69,931), pageviews (259,522), and transactions (993) across the quarter — a 39% jump in transactions compared to January.
+- Notably, the average pageviews per visit remained relatively stable across all three months (~3.97–3.98 pages/visit), suggesting consistent user engagement quality.
+- The growth in transactions outpaced the growth in visits, indicating an improving conversion trend through Q1 2017.
 
 **Key technique:**
 Date parsing, `GROUP BY`
@@ -55,7 +95,6 @@ ORDER BY month;
 <img width="643" height="111" alt="Q1" src="https://github.com/user-attachments/assets/646e7896-34c5-4478-b92d-f9443ce19ff9" />
 </details>
 
-
 ---
 
 ### Query 02: Bounce Rate by Traffic Source (July 2017)
@@ -63,15 +102,18 @@ ORDER BY month;
 **Business question:** How the low-quality visitors who leave immediately across traffic sources?
 
 **Insight:**
-> 📌 Analysis focuses on traffic sources with over 1,000 visits to ensure statistically meaningful comparisons.
-> Direct traffic performs best with the lowest bounce rate (43.3%), suggesting visitors who navigate directly to the site have the highest intent and familiarity with the brand.
-> YouTube.com stands out as the most concerning source — despite ranking 3rd in visit volume (6,351 visits), it has the highest bounce rate among significant sources at 66.7%, meaning nearly 2 in 3 visitors leave without engaging further. This suggests a disconnect between YouTube ad/content messaging and the actual landing page experience.
-> Google, the dominant traffic driver (38,400 visits — nearly double all other sources combined), sits at a mid-range bounce rate of 51.6%. Given its volume, even a small improvement here would have an outsized impact on overall site engagement.
-> Partners and analytics.google.com show similar bounce rates (~52-54%), performing close to Google's average — neither a concern nor a standout.
+- Analysis focuses on traffic sources with over 1,000 visits to ensure statistically meaningful comparisons.
+- Direct traffic performs best with the lowest bounce rate (43.3%), suggesting visitors who navigate directly to the site have the highest intent and familiarity with the brand.
+- YouTube.com stands out as the most concerning source — despite ranking 3rd in visit volume (6,351 visits), it has the highest bounce rate among significant sources at 66.7%, meaning nearly 2 in 3 visitors leave without engaging further. This suggests a disconnect between YouTube ad/content messaging and the actual landing page experience.
+- Google, the dominant traffic driver (38,400 visits — nearly double all other sources combined), sits at a mid-range bounce rate of 51.6%. Given its volume, even a small improvement here would have an outsized impact on overall site engagement.
+- Partners and analytics.google.com show similar bounce rates (~52-54%), performing close to Google's average — neither a concern nor a standout.
 
 **Key technique:**
 Ratio calculation
 
+<details>
+  <summary> Click to view the code and the result</summary>
+  
 ```sql
 SELECT  
   trafficSource.source AS source
@@ -84,9 +126,11 @@ ORDER BY total_visits DESC;
 ```
 
 **Result:**
+
 <img width="637" height="431" alt="Q2" src="https://github.com/user-attachments/assets/29ac89b2-9257-46ea-b720-87a469f1cd36" />
 
 *Showing top 15 rows ordered by total visits. Full results available by running the query.*
+</details>
 
 ---
 
@@ -95,14 +139,17 @@ ORDER BY total_visits DESC;
 **Business question:** Which traffic sources generate the most revenue, and does the pattern differ by week vs month?
 
 **Insight:**
-> Direct traffic dominates revenue by a wide margin, generating $97,334 in June 2017 — over 5x more than Google ($18,757), the second-largest contributor. This suggests a strong base of returning, brand-aware customers who navigate directly to the site without needing paid or organic search.
-> Weekly breakdown reveals significant revenue volatility for top sources. Direct traffic peaked sharply in Week 24 ($30,909) and Week 25 ($27,295), accounting for nearly 60% of its monthly total in just two weeks — suggesting a mid-month promotional event or campaign drove a concentrated spike rather than steady organic demand.
-> Google revenue is similarly uneven, with Week 24 alone contributing $9,217 out of $18,757 monthly total (~49%) — reinforcing the mid-June spike pattern seen across multiple sources simultaneously, which strongly points to a site-wide promotion or marketing event in Week 24 (mid-June).
-> Sources like youtube.com ($16.99), bing ($13.98), and l.facebook.com ($12.48) generate negligible revenue despite presumably driving some traffic, indicating poor revenue conversion from these channels in June 2017.
+- Direct traffic dominates revenue by a wide margin, generating $97,334 in June 2017 — over 5x more than Google ($18,757), the second-largest contributor. This suggests a strong base of returning, brand-aware customers who navigate directly to the site without needing paid or organic search.
+- Weekly breakdown reveals significant revenue volatility for top sources. Direct traffic peaked sharply in Week 24 ($30,909) and Week 25 ($27,295), accounting for nearly 60% of its monthly total in just two weeks — suggesting a mid-month promotional event or campaign drove a concentrated spike rather than steady organic demand.
+- Google revenue is similarly uneven, with Week 24 alone contributing $9,217 out of $18,757 monthly total (~49%) — reinforcing the mid-June spike pattern seen across multiple sources simultaneously, which strongly points to a site-wide promotion or marketing event in Week 24 (mid-June).
+- Sources like youtube.com ($16.99), bing ($13.98), and l.facebook.com ($12.48) generate negligible revenue despite presumably driving some traffic, indicating poor revenue conversion from these channels in June 2017.
 
 **Key technique:**
 `UNION ALL`, `UNNEST`
 
+<details>
+  <summary> Click to view the code and the result</summary>
+  
 ```sql
 SELECT  
   'Month' AS time_type
@@ -130,9 +177,11 @@ ORDER BY source, time;
 ```
 
 **Result:**
+
 <img width="792" height="490" alt="Q3" src="https://github.com/user-attachments/assets/954deb5d-e0f3-4bde-949d-2aa8cfa78c1f" />
 
 *Showing top 17 rows ordered by source & time. Full results available by running the query.*
+</details>
 
 ---
 
@@ -141,15 +190,19 @@ ORDER BY source, time;
 **Business question:** Which traffic sources convert visitors into buyers most effectively?
 
 **Insight:**
-> Only 3 traffic sources generated 50 or more transactions in 2017, highlighting a highly concentrated conversion landscape. This filter threshold helps focus analysis on statistically meaningful conversion patterns rather than outliers from low-volume sources.
-> DFA (Display & Video advertising) leads in conversion rate at 2.64%, despite having the lowest visit volume among the three (2,728 visits). This suggests display advertising is reaching a highly targeted, purchase-ready audience — delivering quality over quantity.
-> Direct traffic ranks second (2.48% conversion rate) with by far the highest visit volume (189,447 visits) and transaction count (4,697). This combination of high volume and strong conversion rate makes direct traffic the single most valuable channel overall — indicating a loyal, brand-aware customer base that converts consistently at scale.
-> Google organic/paid traffic underperforms significantly at just 0.92% — less than half the conversion rate of direct and DFA — despite driving 179,804 visits, the second highest volume. This gap suggests Google is bringing in a large number of browsers and researchers who are not yet ready to purchase.
-> Cross-referencing with Q2: Google's mid-range bounce rate (51.6%) combined with its low conversion rate (0.92%) paints a consistent picture — Google traffic engages enough to stay on site but lacks the purchase intent of direct or DFA visitors.
+- Only 3 traffic sources generated 50 or more transactions in 2017, highlighting a highly concentrated conversion landscape. This filter threshold helps focus analysis on statistically meaningful conversion patterns rather than outliers from low-volume sources.
+- DFA (Display & Video advertising) leads in conversion rate at 2.64%, despite having the lowest visit volume among the three (2,728 visits). This suggests display advertising is reaching a highly targeted, purchase-ready audience — delivering quality over quantity.
+- Direct traffic ranks second (2.48% conversion rate) with by far the highest visit volume (189,447 visits) and transaction count (4,697). This combination of high volume and strong conversion rate makes direct traffic the single most valuable channel overall — indicating a loyal, brand-aware customer base that converts consistently at scale.
+- Google organic/paid traffic underperforms significantly at just 0.92% — less than half the conversion rate of direct and DFA — despite driving 179,804 visits, the second highest volume. This gap suggests Google is bringing in a large number of browsers and researchers who are not yet ready to purchase.
+- Cross-referencing with Q2: Google's mid-range bounce rate (51.6%) combined with its low conversion rate (0.92%) paints a consistent picture — Google traffic engages enough to stay on site but lacks the purchase intent of direct or DFA visitors.
 
 
 ** Key technique:**
 `HAVING` filter, ratio calculation + filter 
+
+<details>
+  <summary> Click to view the code and the result</summary>
+  
 ```sql
 SELECT  
   trafficSource.source AS source
@@ -163,8 +216,9 @@ ORDER BY conversion_rate DESC;
 ```
 
 **Result:**
-<img width="645" height="115" alt="Q4" src="https://github.com/user-attachments/assets/dcdbb0fc-37a2-4bbe-9f27-a2ce5c4fb839" />
 
+<img width="645" height="115" alt="Q4" src="https://github.com/user-attachments/assets/dcdbb0fc-37a2-4bbe-9f27-a2ce5c4fb839" />
+</details>
 ---
 
 ### Query 05: Average Pageviews — Purchasers vs Non-Purchasers (June–July 2017)
@@ -172,13 +226,16 @@ ORDER BY conversion_rate DESC;
 **Business question:** Do customers who end up buying browse significantly more pages before purchasing?
 
 **Insight:**
-> Surprisingly, non-purchasers browse significantly more pages than purchasers — roughly 3x more in both June (316.87 vs 94.02) and July (334.06 vs 124.24). This counterintuitive finding suggests that visitors who end up buying navigate with purpose and efficiency, going directly to the products they want rather than browsing extensively. In contrast, non-purchasers may be window-shopping, comparing options, or struggling to find what they need — resulting in higher pageview counts without conversion.
-> Both groups show increased pageviews in July vs June — purchasers up ~32% (94 → 124) and non-purchasers up ~5% (317 → 334) — suggesting overall site engagement improved in July, with purchasing visitors showing the more significant behavioral shift.
-> The 3x pageview gap between the two groups is consistent across both months, reinforcing that this is a stable behavioral pattern rather than a one-month anomaly — high pageview count alone is not a reliable indicator of purchase intent.
+- Surprisingly, non-purchasers browse significantly more pages than purchasers — roughly 3x more in both June (316.87 vs 94.02) and July (334.06 vs 124.24). This counterintuitive finding suggests that visitors who end up buying navigate with purpose and efficiency, going directly to the products they want rather than browsing extensively. In contrast, non-purchasers may be window-shopping, comparing options, or struggling to find what they need — resulting in higher pageview counts without conversion.
+- Both groups show increased pageviews in July vs June — purchasers up ~32% (94 → 124) and non-purchasers up ~5% (317 → 334) — suggesting overall site engagement improved in July, with purchasing visitors showing the more significant behavioral shift.
+- The 3x pageview gap between the two groups is consistent across both months, reinforcing that this is a stable behavioral pattern rather than a one-month anomaly — high pageview count alone is not a reliable indicator of purchase intent.
 
 **Key technique:**
 `LEFT JOIN` across two CTEs 
 
+<details>
+  <summary> Click to view the code and the result</summary>
+  
 ```sql
 WITH avg_pageviews_purchase AS (SELECT  
                                   format_date('%Y%m',parse_date('%Y%m%d',date)) AS month
@@ -211,8 +268,9 @@ ORDER BY tb1.month;
 ```
 
 **Result:**
-<img width="691" height="88" alt="Q5" src="https://github.com/user-attachments/assets/b5356577-df66-44c3-a64c-278d2b3c61b8" />
 
+<img width="691" height="88" alt="Q5" src="https://github.com/user-attachments/assets/b5356577-df66-44c3-a64c-278d2b3c61b8" />
+</details>
 ---
 
 ### Query 06: Average Transactions per Purchasing User (July 2017)
@@ -220,12 +278,15 @@ ORDER BY tb1.month;
 **Business question:** How often does a single buyer transact within a month?
 
 **Insight:**
-> In July 2017, each purchasing user completed an average of 4.16 transactions — a notably high figure suggesting that buyers are not one-time purchasers but rather repeat transactors within the same month. This indicates strong purchasing momentum once a user decides to buy, possibly driven by a multi-item shopping behavior or multiple separate purchase sessions within July.
-> This metric is particularly valuable when read alongside Q5 — where purchasers browse only ~124 pages on average. The combination of low pageviews but high transaction frequency paints a picture of a decisive, loyal buyer segment: they navigate efficiently, don't need much browsing to make up their mind, and tend to come back and buy again within the same month.
+- In July 2017, each purchasing user completed an average of 4.16 transactions — a notably high figure suggesting that buyers are not one-time purchasers but rather repeat transactors within the same month. This indicates strong purchasing momentum once a user decides to buy, possibly driven by a multi-item shopping behavior or multiple separate purchase sessions within July.
+- This metric is particularly valuable when read alongside Q5 — where purchasers browse only ~124 pages on average. The combination of low pageviews but high transaction frequency paints a picture of a decisive, loyal buyer segment: they navigate efficiently, don't need much browsing to make up their mind, and tend to come back and buy again within the same month.
 
 **Key technique:**
 Aggregation with distinct count
 
+<details>
+  <summary> Click to view the code and the result</summary>
+  
 ```sql
 SELECT  
   format_date('%Y%m',parse_date('%Y%m%d',date)) AS month
@@ -239,8 +300,9 @@ GROUP BY format_date('%Y%m',parse_date('%Y%m%d',date));
 ```
 
 **Result:**
-<img width="488" height="67" alt="Q6" src="https://github.com/user-attachments/assets/33199a20-9729-49ff-be0a-4a57d87145b0" />
 
+<img width="488" height="67" alt="Q6" src="https://github.com/user-attachments/assets/33199a20-9729-49ff-be0a-4a57d87145b0" />
+</details>
 ---
 
 ### Query 07: Revenue Contribution by Device (2017)
@@ -248,13 +310,17 @@ GROUP BY format_date('%Y%m',parse_date('%Y%m%d',date));
 **Business question:** Which devices drive the most revenue, and where should the business prioritize UX investment?
 
 **Insight:**
-> Desktop dominates revenue with an overwhelming 96.14% contribution ($1,674,746 out of $1,742,047 total), leaving mobile and tablet with a combined share of less than 4%.
-> Mobile's 3.25% revenue share is disproportionately low given that mobile typically accounts for the majority of web traffic in e-commerce.
-> Tablet contributes just 0.62% — the smallest share despite being a device often associated with comfortable browsing. This further reinforces that the site may not be optimized for touch-based navigation across non-desktop devices.
-> The 96% desktop dependency represents a significant business risk — as global traffic continues shifting toward mobile, a site this reliant on desktop revenue is vulnerable to losing buyers who primarily shop on their phones.
+- Desktop dominates revenue with an overwhelming 96.14% contribution ($1,674,746 out of $1,742,047 total), leaving mobile and tablet with a combined share of less than 4%.
+- Mobile's 3.25% revenue share is disproportionately low given that mobile typically accounts for the majority of web traffic in e-commerce.
+- Tablet contributes just 0.62% — the smallest share despite being a device often associated with comfortable browsing. This further reinforces that the site may not be optimized for touch-based navigation across non-desktop devices.
+- The 96% desktop dependency represents a significant business risk — as global traffic continues shifting toward mobile, a site this reliant on desktop revenue is vulnerable to losing buyers who primarily shop on their phones.
 
 **Key technique:**
 Window function `SUM() OVER()`
+
+<details>
+  <summary> Click to view the code and the result</summary>
+  
 ```sql
 SELECT
   device.deviceCategory AS category
@@ -269,8 +335,9 @@ ORDER BY SUM(product.productRevenue) DESC;
 ```
 
 **Result:**
-<img width="868" height="120" alt="Q7" src="https://github.com/user-attachments/assets/f05e19aa-0d2f-40e6-9569-0b871ed0836f" />
 
+<img width="868" height="120" alt="Q7" src="https://github.com/user-attachments/assets/f05e19aa-0d2f-40e6-9569-0b871ed0836f" />
+</details>
 ---
 
 ### Query 08: Cross-sell — Other Products Bought by "YouTube Men's Vintage Henley" Buyers (July 2017)
@@ -278,12 +345,15 @@ ORDER BY SUM(product.productRevenue) DESC;
 **Business question:** What else do customers who buy this product tend to purchase? Can we build a recommendation or bundle strategy?
 
 **Insight:**
-> Customers who purchased the YouTube Men's Vintage Henley showed a clear tendency to buy other Google and YouTube branded merchandise in the same session. The top co-purchased items — Google Sunglasses (20), Google Women's Vintage Hero T-shirt (7), and SPF-15 Slim & Slender Lip Balm (6) — suggest these buyers are brand fans shopping across the Google/YouTube merchandise ecosystem rather than one-time single-item purchasers.
-> Google Sunglasses stands out as the strongest cross-sell opportunity, ordered 20 times alongside the Henley — nearly 3x more than any other product. Featuring it as a "You might also like" recommendation on the Henley product page could directly increase average order value.
+- Customers who purchased the YouTube Men's Vintage Henley showed a clear tendency to buy other Google and YouTube branded merchandise in the same session. The top co-purchased items — Google Sunglasses (20), Google Women's Vintage Hero T-shirt (7), and SPF-15 Slim & Slender Lip Balm (6) — suggest these buyers are brand fans shopping across the Google/YouTube merchandise ecosystem rather than one-time single-item purchasers.
+- Google Sunglasses stands out as the strongest cross-sell opportunity, ordered 20 times alongside the Henley — nearly 3x more than any other product. Featuring it as a "You might also like" recommendation on the Henley product page could directly increase average order value.
 
 **Key technique:**
 CTE for customer list
 
+<details>
+  <summary> Click to view the code and the result</summary>
+  
 ```sql
 WITH ctm_list AS (SELECT  
                     DISTINCT fullVisitorId
@@ -306,10 +376,11 @@ ORDER BY quantity DESC;
 ```
 
 **Result:**
+
 <img width="391" height="543" alt="Q8" src="https://github.com/user-attachments/assets/ffa23a4e-8d73-4a99-9438-c2bd83d1d63b" />
 
 *Showing top 19 rows ordered by quantity bought. Full results available by running the query.*
-
+</details>
 ---
 
 ### Query 09: Conversion Funnel — Product View → Add to Cart → Purchase (Jan–Mar 2017)
@@ -317,13 +388,17 @@ ORDER BY quantity DESC;
 **Business question:** Where in the purchase funnel do we lose the most customers?
 
 **Insight:**
-> 📌 The conversion funnel improved consistently across all three months, with both add-to-cart rate (28.47% → 37.29%) and purchase rate (8.31% → 12.64%) trending upward from January to March. This suggests either improving site experience, better product-market fit, or increasingly targeted traffic quality through Q1 2017.
-> The biggest drop-off occurs at the product view → add-to-cart stage — even at its best in March, 62.71% of product viewers leave without adding anything to cart. This is where the most significant conversion opportunity lies: improving product page experience (better images, clearer pricing, stronger CTAs) could meaningfully move this needle.
-> February shows an interesting pattern — product views dropped significantly (-16.7% vs January, from 25,787 to 21,489) yet add-to-cart numbers stayed almost flat (7,342 → 7,360), resulting in the highest add-to-cart rate jump (+5.78 percentage points). This suggests February attracted fewer but higher-intent visitors — people who arrived already knowing what they wanted. This aligns with the lower visit volume seen across Q2 data for February.
-> March delivered the strongest overall funnel performance — highest add-to-cart rate (37.29%), highest purchase rate (12.64%), and highest absolute purchases (2,977). The simultaneous improvement across all funnel stages suggests a compounding effect: better traffic quality feeding into a better converting funnel.
+- The conversion funnel improved consistently across all three months, with both add-to-cart rate (28.47% → 37.29%) and purchase rate (8.31% → 12.64%) trending upward from January to March. This suggests either improving site experience, better product-market fit, or increasingly targeted traffic quality through Q1 2017.
+- The biggest drop-off occurs at the product view → add-to-cart stage — even at its best in March, 62.71% of product viewers leave without adding anything to cart. This is where the most significant conversion opportunity lies: improving product page experience (better images, clearer pricing, stronger CTAs) could meaningfully move this needle.
+- February shows an interesting pattern — product views dropped significantly (-16.7% vs January, from 25,787 to 21,489) yet add-to-cart numbers stayed almost flat (7,342 → 7,360), resulting in the highest add-to-cart rate jump (+5.78 percentage points). This suggests February attracted fewer but higher-intent visitors — people who arrived already knowing what they wanted. This aligns with the lower visit volume seen across Q2 data for February.
+- March delivered the strongest overall funnel performance — highest add-to-cart rate (37.29%), highest purchase rate (12.64%), and highest absolute purchases (2,977). The simultaneous improvement across all funnel stages suggests a compounding effect: better traffic quality feeding into a better converting funnel.
+
 **Key technique:**
 Multi-CTE and `LEFT JOIN` 
 
+<details>
+  <summary> Click to view the code and the result</summary>
+  
 ```sql
 WITH purchase AS (SELECT
               format_date('%Y%m',parse_date('%Y%m%d',date)) AS month
@@ -367,8 +442,9 @@ ORDER BY month;
 ```
 
 **Result:**
-<img width="894" height="117" alt="q9" src="https://github.com/user-attachments/assets/cf294752-99e3-4f48-82d3-1f22e490c744" />
 
+<img width="894" height="117" alt="q9" src="https://github.com/user-attachments/assets/cf294752-99e3-4f48-82d3-1f22e490c744" />
+</details>
 ---
 
 ### Query 10: Weekly Revenue & Cumulative Revenue (May–July 2017)
@@ -376,14 +452,17 @@ ORDER BY month;
 **Business question:** How does revenue accumulate week over week, and are there any notable spikes or dips?
 
 **Insight:**
-> Revenue grew steadily from May to July, reaching a cumulative total of $425,258 over the three-month period.
-> Revenue spiked significantly in Week 24 (June, $45,054) and Week 29 (July, $57,111), with multiple traffic sources surging simultaneously in Week 24. The cause of these spikes — whether promotional campaigns, seasonal demand, or external events — cannot be determined from this dataset alone and would require cross-referencing with marketing campaign data or promotion calendars.
-> Week 26 shows an anomaly worth noting — it appears twice in the data (rows 10 and 11), split across June and July months, with revenue of $24,033 and $779 respectively. The $779 figure for the July portion of Week 26 is unusually low and likely reflects only a partial day or two at the month boundary rather than a genuine revenue dip. This is a data artifact from how BigQuery handles week-month boundaries rather than a real business signal.
-> May showed a declining mid-month trend (Week 19: $34,741 → Week 21: $20,199) before recovering slightly in Week 22, suggesting weaker mid-May performance that could warrant investigation into whether promotional activity or seasonality was a factor.
+- Revenue grew steadily from May to July, reaching a cumulative total of $425,258 over the three-month period.
+- Revenue spiked significantly in Week 24 (June, $45,054) and Week 29 (July, $57,111), with multiple traffic sources surging simultaneously in Week 24. The cause of these spikes — whether promotional campaigns, seasonal demand, or external events — cannot be determined from this dataset alone and would require cross-referencing with marketing campaign data or promotion calendars.
+- Week 26 shows an anomaly worth noting — it appears twice in the data (rows 10 and 11), split across June and July months, with revenue of $24,033 and $779 respectively. The $779 figure for the July portion of Week 26 is unusually low and likely reflects only a partial day or two at the month boundary rather than a genuine revenue dip. This is a data artifact from how BigQuery handles week-month boundaries rather than a real business signal.
+- May showed a declining mid-month trend (Week 19: $34,741 → Week 21: $20,199) before recovering slightly in Week 22, suggesting weaker mid-May performance that could warrant investigation into whether promotional activity or seasonality was a factor.
 
 **Key technique:**
 Running total with window function
 
+<details>
+  <summary> Click to view the code and the result</summary>
+  
 ```sql
 WITH tb1 AS (SELECT  
               format_date('%Y-%m',parse_date('%Y%m%d',date)) AS month
@@ -405,7 +484,9 @@ FROM tb1
 ```
 
 **Result:**
+
 <img width="867" height="458" alt="Q10" src="https://github.com/user-attachments/assets/3b52c342-1acf-47df-b36e-2a3c550b646e" />
+</details>
 
 ---
 ## 🔍 Key Insights

@@ -35,8 +35,9 @@ Analyzing user behavior and revenue performance for an e-commerce platform using
 
 **Key technique:**
 Date parsing, `GROUP BY`
-
-```sql
+<details>
+  <summary> Click to view the code and the result</summary>
+  ```sql
 SELECT  
   format_date('%Y%m',parse_date('%Y%m%d',date)) AS month
   ,SUM(totals.visits) as visits
@@ -50,6 +51,8 @@ ORDER BY month;
 
 **Result:**
 <img width="643" height="111" alt="Q1" src="https://github.com/user-attachments/assets/646e7896-34c5-4478-b92d-f9443ce19ff9" />
+</details>
+
 
 ---
 

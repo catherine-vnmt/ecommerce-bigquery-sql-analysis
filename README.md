@@ -51,7 +51,8 @@ ORDER BY month;
 ```
 
 **Result:**
-[Query 1 result]<img width="643" height="111" alt="Q1" src="https://github.com/user-attachments/assets/646e7896-34c5-4478-b92d-f9443ce19ff9" />
+
+<img width="643" height="111" alt="Q1" src="https://github.com/user-attachments/assets/646e7896-34c5-4478-b92d-f9443ce19ff9" />
 </details>
 
 

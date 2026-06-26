@@ -37,6 +37,7 @@ Analyzing user behavior and revenue performance for an e-commerce platform using
 Date parsing, `GROUP BY`
 <details>
   <summary> Click to view the code and the result</summary>
+  
   ```sql
 SELECT  
   format_date('%Y%m',parse_date('%Y%m%d',date)) AS month
